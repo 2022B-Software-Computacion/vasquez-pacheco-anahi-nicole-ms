@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "966888054002",
+    "project_id": "b-s-anvp",
+    "storage_bucket": "b-s-anvp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:966888054002:android:9eec7e62ebaf994e40846b",
+        "android_client_info": {
+          "package_name": "com.example.anvpapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "966888054002-bvdla98u7o9a2c9f3i8ej1485788mvbr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBizb8V1-7yNlJaY-TbYr5GK9qPIe1ynsU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "966888054002-bvdla98u7o9a2c9f3i8ej1485788mvbr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
