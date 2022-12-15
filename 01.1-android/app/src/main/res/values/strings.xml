@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">anvpapplication</string>
+    <string name="string">Hola Mundo</string>
 </resources>

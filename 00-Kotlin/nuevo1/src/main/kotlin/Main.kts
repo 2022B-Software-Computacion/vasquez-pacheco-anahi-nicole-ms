@@ -274,7 +274,7 @@ fun main(){
         }
 
     println(respuestaAny) //true
-    
+
     val respuestaAll: Boolean = arregloDinamico
         .all { valorActual: Int ->
             return@all (valorActual > 5)
