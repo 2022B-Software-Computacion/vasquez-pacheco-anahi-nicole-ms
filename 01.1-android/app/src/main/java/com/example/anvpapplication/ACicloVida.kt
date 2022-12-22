@@ -1,6 +1,7 @@
 package com.example.anvpapplication
 
 import android.os.Bundle
+import android.os.PersistableBundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -37,29 +38,49 @@ class ACicloVida : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        mostrarSnackbar("OnCreate")
+        mostrarSnackbar("OnStart")
     }
     override fun onResume() {
         super.onResume()
-        mostrarSnackbar("OnCreate")
+        mostrarSnackbar("OnResume")
     }
     override fun onRestart() {
         super.onRestart()
-        mostrarSnackbar("OnCreate")
+        mostrarSnackbar("OnRestart")
     }
     override fun onPause() {
         super.onPause()
-        mostrarSnackbar("OnCreate")
+        mostrarSnackbar("OnPause")
     }
     override fun onStop() {
         super.onStop()
-        mostrarSnackbar("OnCreate")
+        mostrarSnackbar("OnStop")
     }
     override fun onDestroy() {
         super.onDestroy()
-        mostrarSnackbar("OnCreate")
+        mostrarSnackbar("OnDestroy")
     }
 
+    override fun onSaveInstanceState(outState: Bundle){
+        outState.run {
+            //GUARDAR LAS VARIABLES
+            //PRIMITIVAS
+            putString("textoGuardado", textoGlobal)
+            //putInt("numeroGuardado", numero)
+        }
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        val textoRecuperado:String? = savedInstanceState.getString("textoGuardado")
+        //val textoRecuperado:Int? = savedInstanceState.getInt("numeroGuardado")
+        if(textoRecuperado!= null){
+            mostrarSnackbar(textoRecuperado)
+            textoGlobal = textoRecuperado
+        }
+        super.onRestoreInstanceState(savedInstanceState)
+    }
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_aciclo_vida)
@@ -73,5 +94,9 @@ class ACicloVida : AppCompatActivity() {
         textoGlobal, Snackbar.LENGTH_LONG)
             .setAction("Action", null).show()
     }
+
+
+
+
 
 }
