@@ -1,23 +1,14 @@
 package com.example.anvpapplication
 
 class BBaseDatosMemoria {
-
-    companion object{
+    companion object {
         val arregloBEntrenador = arrayListOf<BEntrenador>()
+
         init {
-            arregloBEntrenador
-                .add(
-                    BEntrenador("Anahi", "a@a.com")
-                )
-            arregloBEntrenador
-                .add(
-                    BEntrenador("Alexis", "a1@a1.com")
-                )
-            arregloBEntrenador
-                .add(
-                    BEntrenador("Leonardo", "l@l.com")
-                )
+            arregloBEntrenador.add(BEntrenador(1,"Anahi", "a@a.com"))
+            arregloBEntrenador.add(BEntrenador(2,"Nicole", "n@n.com"))
+            arregloBEntrenador.add(BEntrenador(3, "Gabriela", "g@g.com"))
+
         }
     }
-
 }
