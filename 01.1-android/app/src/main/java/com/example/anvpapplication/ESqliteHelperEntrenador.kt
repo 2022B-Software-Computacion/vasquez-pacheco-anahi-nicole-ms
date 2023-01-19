@@ -23,7 +23,7 @@ class ESqliteHelperEntrenador(contexto: Context?) : SQLiteOpenHelper(contexto, "
     fun crearEntrenador(nombre: String, descripcion: String): Boolean{
         val baseDatosEscribura = writableDatabase
         val valoresAGuardar = ContentValues()
-        valoresAGuardar.put("nombre", "Kelvin")
+        valoresAGuardar.put("nombre", nombre)
         valoresAGuardar.put("descripcion", descripcion)
         val resultadoGuardar = baseDatosEscribura.insert("ENTRENADOR", null, valoresAGuardar)
         baseDatosEscribura.close()

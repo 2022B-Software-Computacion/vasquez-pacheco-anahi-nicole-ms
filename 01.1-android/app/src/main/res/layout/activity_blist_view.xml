@@ -15,16 +15,17 @@
         app:layout_constraintEnd_toEndOf="@+id/lv_list_view"
         app:layout_constraintStart_toStartOf="@+id/lv_list_view"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintVertical_bias="0.976" />
 
     <ListView
         android:id="@+id/lv_list_view"
-        android:layout_width="173dp"
-        android:layout_height="105dp"
+        android:layout_width="420dp"
+        android:layout_height="653dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.242" />
+        app:layout_constraintVertical_bias="0.008" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
