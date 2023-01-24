@@ -29,7 +29,12 @@ class MainActivity : AppCompatActivity() {
 
                 val uri: Uri = result.data!!.data!!
                 val cursor = contentResolver.query(
-                    uri, null, null, null, null, null
+                    uri,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
                 )
                 cursor?.moveToFirst()
                 val indiceTelefono = cursor?.getColumnIndex(
@@ -92,7 +97,8 @@ class MainActivity : AppCompatActivity() {
         intentExplicito.putExtra("Nombre", "Anahi")
         intentExplicito.putExtra("Apellido", "Vasquez")
         intentExplicito.putExtra("Edad", 21)
-        intentExplicito.putExtra("entrenadorPrincipal", BEntrenador(1,"ANAHI", "PARCELABLE"))
+        intentExplicito.putExtra("entrenadorPrincipal",
+            BEntrenador(1, "ANAHI", "PARCELABLE"))
         contenidoIntentExplicito.launch(intentExplicito)
     }
 }
