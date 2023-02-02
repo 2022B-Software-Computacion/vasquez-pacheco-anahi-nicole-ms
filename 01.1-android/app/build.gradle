@@ -4,6 +4,7 @@ plugins {
 
     //FIREBASE
     id 'com.google.gms.google-services'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
 android {
@@ -39,6 +40,8 @@ android {
 }
 
 dependencies {
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
+
 
     //solución error Duplicated Classes
     def lifecycle_version = "2.4.0"

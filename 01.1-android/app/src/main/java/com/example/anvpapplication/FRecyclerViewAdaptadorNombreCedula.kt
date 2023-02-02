@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Recycler
 
 class FRecyclerViewAdaptadorNombreCedula (
+
     private val contexto: GRecyclerView,
     private val lista: ArrayList<BEntrenador>,
     private val recyclerVIew: RecyclerView
