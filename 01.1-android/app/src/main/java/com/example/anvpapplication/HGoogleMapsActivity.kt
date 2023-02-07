@@ -4,14 +4,13 @@ import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.Marker
-import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.gms.maps.model.*
 import kotlin.math.log
 
 class HGoogleMapsActivity : AppCompatActivity() {
@@ -25,7 +24,21 @@ class HGoogleMapsActivity : AppCompatActivity() {
         iniciarLogicaMapa()
         //anadirMarcador()
         //moverCamaraConZoom()
+        val boton = findViewById<Button>(R.id.btn_ir_carolina)
+            boton.
+                    setOnClickListener {
+                        irCarolina()
+                    }
     }
+
+    fun irCarolina(){
+        var carolina = LatLng(
+            -0.18440594762704626, -78.48531794254427
+        )
+        val zoom = 17f
+        moverCamaraConZoom(carolina, zoom)
+    }
+
 
     fun iniciarLogicaMapa() {
         val fragmentoMapa = supportFragmentManager
@@ -41,6 +54,34 @@ class HGoogleMapsActivity : AppCompatActivity() {
                 val titulo = "Quicentro"
                 val markQuicentro = anadirMarcador(quicentro, titulo)
                 markQuicentro.tag = titulo
+
+                //POLILINEA
+                val poliLineaUno = googleMap
+                    .addPolyline(
+                        PolylineOptions()
+                        .clickable(true)
+                            .add(
+                                LatLng(-0.1777182063962678, -78.48091075609477),
+                                LatLng(-0.17516475557145203, -78.480964400275),
+                                LatLng(-0.1756797372785816, -78.47785303782256)
+                            )
+                    )
+                poliLineaUno.tag = "Linea 1" // <- ID
+
+                //POLIGONO
+                val poligonoUno = googleMap
+                    .addPolygon(
+                        PolygonOptions()
+                            .clickable(true)
+                            .add(
+                                LatLng(-0.1771546902239471,-78.48344981495214),
+                                LatLng(-0.17968981486125768,-78.48269198043828),
+                                LatLng(-0.17710958124147777,-78.48142892291516)
+                            )
+                    )
+                poligonoUno.fillColor = -0xc771c4
+                poligonoUno.tag = "poligono-2" // <- ID
+                escucharListeners()
             }
         }
     }

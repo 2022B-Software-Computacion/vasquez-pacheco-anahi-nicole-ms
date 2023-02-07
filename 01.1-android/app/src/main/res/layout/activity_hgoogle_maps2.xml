@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".HGoogleMapsActivity">
 
+
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:map="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -15,4 +16,14 @@
         android:layout_height="match_parent"
         tools:context=".HGoogleMaps" />
 
+    <Button
+        android:id="@+id/btn_ir_carolina"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Carolina"
+        tools:layout_editor_absoluteX="154dp"
+        tools:layout_editor_absoluteY="71dp"
+        tools:ignore="MissingConstraints" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
