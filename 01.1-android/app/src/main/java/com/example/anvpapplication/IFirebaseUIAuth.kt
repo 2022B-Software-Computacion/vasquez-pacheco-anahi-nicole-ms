@@ -2,6 +2,7 @@ package com.example.anvpapplication
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
@@ -53,6 +54,19 @@ class IFirebaseUIAuth : AppCompatActivity() {
         res: IdpResponse
     ){
 
+        val btnLogin = findViewById<Button>(R.id.btn_login_firebase)
+        val btnLogout = findViewById<Button>(R.id.btn_logout_firebase)
+        btnLogin.visibility = View.VISIBLE
+        btnLogout.visibility = View.INVISIBLE
+        if(res.isNewUser == true){
+            registrarUsuarioPorPrimeraVez(res)
+        }
+    }
+
+    fun registrarUsuarioPorPrimeraVez(
+        usuario: IdpResponse
+    ){
+        //Firestore
     }
 
 }
