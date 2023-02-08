@@ -17,7 +17,7 @@ class FRecyclerViewAdaptadorNombreCedula (
     ): RecyclerView.Adapter<FRecyclerViewAdaptadorNombreCedula.MyViewHolder>(){
         inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view){
 
-            val nombreTextView: TextView = TODO()
+            val nombreTextView: TextView
             val cedulaTextView: TextView
             val likesTextView: TextView
             val accionButton: Button
@@ -28,7 +28,7 @@ class FRecyclerViewAdaptadorNombreCedula (
                 cedulaTextView = view.findViewById(R.id.tv_cedula)
                 likesTextView = view.findViewById(R.id.tv_likes)
                 accionButton = view.findViewById<Button>(R.id.btn_dar_like)
-                accionButton.setOnClickListener{ anadirLike()}
+                accionButton.setOnClickListener{anadirLike()}
             }
 
             fun anadirLike(){

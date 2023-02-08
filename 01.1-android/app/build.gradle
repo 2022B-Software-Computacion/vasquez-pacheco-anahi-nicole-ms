@@ -42,6 +42,12 @@ android {
 dependencies {
     implementation 'com.google.android.gms:play-services-maps:18.0.2'
 
+    // Librearia de Autenticacion
+    implementation 'com.google.firebase:firebase-auth:21.0.2'
+    // UI libreria auth
+    implementation 'com.firebaseui:firebase-ui-auth:7.2.0'
+    // Firestore
+    implementation 'com.google.firebase:firebase-firestore-ktx'
 
     //solución error Duplicated Classes
     def lifecycle_version = "2.4.0"
