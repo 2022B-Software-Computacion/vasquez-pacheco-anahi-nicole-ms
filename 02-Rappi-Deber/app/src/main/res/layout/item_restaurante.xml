@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/ivRestaurante"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:background="@color/black" />
+
+    <TextView
+        android:id="@+id/tvRestauranteNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:text="Nombre"
+        app:layout_constraintStart_toEndOf="@+id/ivRestaurante"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvRestauranteTiempo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:text="Tiempo"
+        app:layout_constraintTop_toBottomOf="@+id/tvRestauranteNombre"
+        app:layout_constraintStart_toEndOf="@+id/ivRestaurante"/>
+
+    <TextView
+        android:id="@+id/tvRestauranteCostoEnvio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:text="Costo Envío"
+        app:layout_constraintTop_toBottomOf="@+id/tvRestauranteTiempo"
+        app:layout_constraintStart_toEndOf="@+id/ivRestaurante"/>
+
+    <TextView
+        android:id="@+id/tvRestauranteCalificacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:text="Calificacion"
+        app:layout_constraintTop_toBottomOf="@+id/tvRestauranteCostoEnvio"
+        app:layout_constraintStart_toEndOf="@+id/ivRestaurante"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
