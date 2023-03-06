@@ -13,8 +13,12 @@ class RestauranteAdapter(private val restauranteList: List<Restaurante>) : Recyc
     }
 
     override fun onBindViewHolder(holder: RestauranteViewHolder, position: Int) {
+        val item = restauranteList[position]
+        holder.render(item)
     }
 
-    override fun getItemCount(): Int = restauranteList.size
+    override fun getItemCount(): Int {
+        return restauranteList.size
+    }
 
 }

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "776705384797",
+    "project_id": "rappi-recycle-view",
+    "storage_bucket": "rappi-recycle-view.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:776705384797:android:aa57a2b7c99ab9280908b4",
+        "android_client_info": {
+          "package_name": "com.example.rappi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "776705384797-4dsf1mils3q2i806q06qdlhp53lm0k9s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbRMVgbNnPfyLRsFbbGtkDsM5kY8cO3mY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "776705384797-4dsf1mils3q2i806q06qdlhp53lm0k9s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

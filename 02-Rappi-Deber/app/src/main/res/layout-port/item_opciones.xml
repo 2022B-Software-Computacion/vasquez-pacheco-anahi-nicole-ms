@@ -2,14 +2,16 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="MissingDefaultResource">
+
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/ivRestaurante"
-            android:layout_width="150dp"
+            android:id="@+id/ivOpciones"
+            android:layout_width="360dp"
             android:layout_height="150dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
@@ -18,46 +20,36 @@
             tools:background="@color/black" />
 
         <TextView
-            android:id="@+id/tvRestauranteNombre"
+            android:id="@+id/tvOpcionesNombre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginStart="20dp"
             android:text="Nombre"
             android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/ivRestaurante"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivOpciones" />
 
         <TextView
-            android:id="@+id/tvRestauranteTiempo"
+            android:id="@+id/tvOpcionesDescripcion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginStart="20dp"
-            android:text="Tiempo"
-            app:layout_constraintTop_toBottomOf="@+id/tvRestauranteNombre"
-            app:layout_constraintStart_toEndOf="@+id/ivRestaurante"/>
+            android:text="Descripcion"
+            app:layout_constraintTop_toBottomOf="@+id/tvOpcionesNombre"
+            app:layout_constraintStart_toStartOf="parent"/>
 
         <TextView
-            android:id="@+id/tvRestauranteCostoEnvio"
+            android:id="@+id/tvOpcionesPrecio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginStart="20dp"
-            android:text="Costo Envío"
-            app:layout_constraintTop_toBottomOf="@+id/tvRestauranteTiempo"
-            app:layout_constraintStart_toEndOf="@+id/ivRestaurante"/>
-
-        <TextView
-            android:id="@+id/tvRestauranteCalificacion"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="20dp"
-            android:text="Calificacion"
-            app:layout_constraintTop_toBottomOf="@+id/tvRestauranteCostoEnvio"
-            app:layout_constraintStart_toEndOf="@+id/ivRestaurante"/>
-
+            android:text="Precio"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@+id/tvOpcionesDescripcion"
+            app:layout_constraintStart_toStartOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     </layout>

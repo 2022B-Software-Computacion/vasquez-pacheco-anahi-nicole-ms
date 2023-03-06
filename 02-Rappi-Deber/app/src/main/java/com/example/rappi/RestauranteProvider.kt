@@ -9,7 +9,7 @@ class RestauranteProvider {
                 "25 min",
                 "$1,89",
                 "4.2",
-                "https://www.mcdonalds.com.ec/images/layout/mcdonalds-logo-bg-red.png"
+                "https://1000marcas.net/wp-content/uploads/2019/11/McDonalds-logo.png"
             ),
             Restaurante(
                 "KFC",
@@ -31,6 +31,13 @@ class RestauranteProvider {
                 "$2,09",
                 "4.5",
                 "https://tofuu.getjusto.com/orioneat-local/resized2/TneZZDnjXjhRmjR3W-200-x.webp"
+            ),
+            Restaurante(
+                "Pizza Hut",
+                "35 min",
+                "Free",
+                "4.4",
+                "https://e7.pngegg.com/pngimages/542/937/png-clipart-pizza-hut-breadstick-buffalo-wing-kfc-hut-logo-signage.png"
             ),
 
             )
