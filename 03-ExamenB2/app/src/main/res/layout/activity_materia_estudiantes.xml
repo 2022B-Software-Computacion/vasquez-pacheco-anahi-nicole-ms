@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MateriaEstudiantes">
+
+    <ListView
+        android:id="@+id/id_listview_estudiantes"
+        android:layout_width="407dp"
+        android:layout_height="379dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.272" />
+
+    <TextView
+        android:id="@+id/id_textview_nombreMateria"
+        android:layout_width="209dp"
+        android:layout_height="40dp"
+        android:background="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/id_listview_estudiantes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.168"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.482" />
+
+    <Button
+        android:id="@+id/id_btn_createEstudiante"
+        android:layout_width="105dp"
+        android:layout_height="40dp"
+        android:backgroundTint="@color/purple_500"
+        android:text="Crear"
+        app:layout_constraintBottom_toTopOf="@+id/id_listview_estudiantes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.327"
+        app:layout_constraintStart_toEndOf="@+id/id_textview_nombreMateria"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.492" />
+</androidx.constraintlayout.widget.ConstraintLayout>
