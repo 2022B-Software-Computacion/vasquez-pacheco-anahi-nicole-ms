@@ -18,35 +18,35 @@ import androidx.activity.result.contract.ActivityResultContracts
 class MainActivity : AppCompatActivity() {
     val firestoreDB = FireStoreDB()
     var idItemSeleccionado = 0
-    lateinit var materias: List<Materia>
-    lateinit var materiaNames: ArrayList<String>
-    lateinit var materiaListView: ListView
+    lateinit var empresas: List<Empresa>
+    lateinit var empresaNames: ArrayList<String>
+    lateinit var empresaListView: ListView
 
-    private val actualizarMateria =
+    private val actualizarEmpresa =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
-                val materiaActualizada =
-                    result.data?.getParcelableExtra<Materia>("materiaActualizada")
+                val empresaActualizada =
+                    result.data?.getParcelableExtra<Empresa>("empresaActualizada")
 
-                if (materiaActualizada != null) {
+                if (empresaActualizada != null) {
                     val index: Int =
-                        materias.indexOfFirst { it.codigo == materiaActualizada.codigo }
+                        empresas.indexOfFirst { it.idEmpresa == empresaActualizada.idEmpresa }
 
                     if (index >= 0) {
-                        val estudiantesActualizados = materias.toMutableList()
-                        estudiantesActualizados[index] = materiaActualizada
-                        materias = estudiantesActualizados.toList()
+                        val departamentosActualizados = empresas.toMutableList()
+                        departamentosActualizados[index] = empresaActualizada
+                        empresas = departamentosActualizados.toList()
 
-                        materiaNames[index] = materiaActualizada.nombre
-                        Log.e("TAG", materiaNames.toString())
+                        empresaNames[index] = empresaActualizada.nombreEmpresa
+                        Log.e("TAG", empresaNames.toString())
 
-                        (materiaListView.adapter as ArrayAdapter<*>).notifyDataSetChanged()
+                        (empresaListView.adapter as ArrayAdapter<*>).notifyDataSetChanged()
                     } else {
-                        val estudiantesActualizados = materias.toMutableList()
-                        estudiantesActualizados.add(materiaActualizada)
-                        materias = estudiantesActualizados.toList()
-                        materiaNames.add(materiaActualizada.nombre)
-                        (materiaListView.adapter as ArrayAdapter<*>).notifyDataSetChanged()
+                        val departamentosActualizados = empresas.toMutableList()
+                        departamentosActualizados.add(empresaActualizada)
+                        empresas = departamentosActualizados.toList()
+                        empresaNames.add(empresaActualizada.nombreEmpresa)
+                        (empresaListView.adapter as ArrayAdapter<*>).notifyDataSetChanged()
                     }
                 }
 
@@ -56,12 +56,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        this.materiaListView = findViewById<ListView>(R.id.id_listview_Materia)
-        getMaterias()
-        registerForContextMenu(materiaListView)
-        val btnCrearMateria: Button = findViewById<Button>(R.id.btn_crear_materia)
-        btnCrearMateria.setOnClickListener {
-            actualizarMateria(null)
+        this.empresaListView = findViewById<ListView>(R.id.lv_Empresa)
+        getEmpresas()
+        registerForContextMenu(empresaListView)
+        val btnCrearEmpresa: Button = findViewById<Button>(R.id.btn_crear_empresa)
+        btnCrearEmpresa.setOnClickListener {
+            actualizarEmpresa(null)
         }
 
     }
@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
     ) {
         super.onCreateContextMenu(menu, v, menuInfo)
         val inflater = menuInflater
-        inflater.inflate(R.menu.context_menu_materia, menu)
+        inflater.inflate(R.menu.context_menu_empresa, menu)
         val info = menuInfo as AdapterView.AdapterContextMenuInfo
         val id = info.position
         idItemSeleccionado = id
@@ -82,71 +82,71 @@ class MainActivity : AppCompatActivity() {
     override fun onContextItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.mi_editar -> {
-                actualizarMateria(materias[idItemSeleccionado])
+                actualizarEmpresa(empresas[idItemSeleccionado])
                 return true
             }
             R.id.mi_eliminar -> {
-                eliminarMateria()
+                eliminarEmpresa()
                 return true
             }
-            R.id.mi_estudiantes -> {
-                getEstudiantes()
+            R.id.mi_departamento -> {
+                getDepartamentos()
                 return true
             }
             else -> super.onContextItemSelected(item)
         }
     }
 
-    fun actualizarMateria(
-        materia: Materia?
+    fun actualizarEmpresa(
+        empresa: Empresa?
     ) {
-        val intent = Intent(this, MateriaAdapter::class.java)
-        intent.putExtra("materia", materia)
-        actualizarMateria.launch(intent)
+        val intent = Intent(this, EmpresaAdapter::class.java)
+        intent.putExtra("empresa", empresa)
+        actualizarEmpresa.launch(intent)
     }
 
-    fun eliminarMateria() {
-        val materiaIndex = idItemSeleccionado
-        val materiaId = materias[materiaIndex].codigo
+    fun eliminarEmpresa() {
+        val empresaIndex = idItemSeleccionado
+        val empresaId = empresas[empresaIndex].idEmpresa
 
-        firestoreDB.eliminarMateria(materiaId!!,
+        firestoreDB.eliminarEmpresa(empresaId!!,
             onSuccess = {
-                Toast.makeText(this, "Materia eliminada con exito", Toast.LENGTH_SHORT)
+                Toast.makeText(this, "Empresa eliminada con exito", Toast.LENGTH_SHORT)
                     .show()
-                materias = materias.filterIndexed { index, _ -> index != materiaIndex }
-                materiaNames.removeAt(materiaIndex)
-                (materiaListView.adapter as ArrayAdapter<*>).notifyDataSetChanged()
+                empresas = empresas.filterIndexed { index, _ -> index != empresaIndex }
+                empresaNames.removeAt(empresaIndex)
+                (empresaListView.adapter as ArrayAdapter<*>).notifyDataSetChanged()
             },
-            onFailure = { error -> print("Error eliminando materia") }
+            onFailure = { error -> print("Error eliminando empresa") }
         )
 
     }
 
-    fun getEstudiantes() {
-        val materia = materias[idItemSeleccionado]
+    fun getDepartamentos() {
+        val empresa = empresas[idItemSeleccionado]
 
-        val intent = Intent(this, MateriaEstudiantes::class.java)
-        intent.putExtra("idMateria", materia.codigo)
-        intent.putExtra("materiaName", materia.nombre)
+        val intent = Intent(this, EmpresaDepartamentos::class.java)
+        intent.putExtra("idEmpresa", empresa.idEmpresa)
+        intent.putExtra("empresaName", empresa.nombreEmpresa)
         intent.putParcelableArrayListExtra(
-            "estudiantes",
-            ArrayList(materia.estudiantes)
+            "departamentos",
+            ArrayList(empresa.departamentos)
         )
 
         startActivity(intent)
     }
 
-    fun getMaterias() {
-        firestoreDB.getMaterias(
-            onSuccess = { materias ->
-                this.materias = materias
-                materiaNames = materias.map { it.nombre } as ArrayList<String>
-                val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, materiaNames)
-                materiaListView.adapter = adapter
+    fun getEmpresas() {
+        firestoreDB.getEmpresas(
+            onSuccess = { empresas ->
+                this.empresas = empresas
+                empresaNames = empresas.map { it.nombreEmpresa } as ArrayList<String>
+                val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, empresaNames)
+                empresaListView.adapter = adapter
                 adapter.notifyDataSetChanged()
             },
             onFailure = { error ->
-                print("Error retornando materias")
+                print("Error retornando empresas")
             }
         )
     }

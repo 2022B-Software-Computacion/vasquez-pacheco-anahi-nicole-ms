@@ -6,22 +6,22 @@ class FireStoreDB {
 
     private val db = FirebaseFirestore.getInstance()
 
-    private val materiasCollection = db.collection("materias")
+    private val empresasCollection = db.collection("empresas")
 
-    // ---------- MATERIAS ----------
+    // ---------- EMPRESAS ----------
 
-    fun crearMateria(
-        materia: Materia,
+    fun crearEmpresa(
+        empresa: Empresa,
         onSuccess: (String) -> Unit,
         onFailure: (Exception) -> Unit
     ) {
-        materiasCollection.add(materia)
+        empresasCollection.add(empresa)
             .addOnSuccessListener { documentReference ->
-                val estudiantesRef = documentReference.collection("estudiantes")
-                for (estudiante in materia.estudiantes) {
-                    estudiantesRef.add(estudiante)
+                val departamentoRef = documentReference.collection("departamentos")
+                for (dep in empresa.departamentos) {
+                    departamentoRef.add(dep)
                         .addOnSuccessListener {
-                            estudiante.codigo = it.id
+                            dep.idDepartamento = it.id
                         }
                         .addOnFailureListener { onFailure(it) }
                 }
@@ -30,68 +30,68 @@ class FireStoreDB {
             .addOnFailureListener { onFailure(it) }
     }
 
-    fun actualizarMateria(
-        idMateria: String,
-        materia: Materia,
+    fun actualizarEmpresa(
+        idEmpresa: String,
+        empresa: Empresa,
         onSuccess: () -> Unit,
         onFailure: (Exception) -> Unit
     ) {
-        materiasCollection.document(idMateria).set(materia)
+        empresasCollection.document(idEmpresa.toString()).set(empresa)
             .addOnSuccessListener { onSuccess() }
             .addOnFailureListener { onFailure(it) }
     }
 
-    fun eliminarMateria(
-        idMateria: String,
+    fun eliminarEmpresa(
+        idEmpresa: String,
         onSuccess: () -> Unit,
         onFailure: (Exception) -> Unit
     ) {
-        materiasCollection.document(idMateria).delete()
+        empresasCollection.document(idEmpresa.toString()).delete()
             .addOnSuccessListener { onSuccess() }
             .addOnFailureListener { onFailure(it) }
     }
 
-    // ---------- ESTUDIANTES ----------
+    // ---------- DEPARTAMENTOS ----------
 
-    fun crearEstudiante(
-        idMateria: String,
-        estudiante: Estudiante,
+    fun crearDepartamento(
+        idEmpresa: String,
+        departamento: Departamento,
         onSuccess: () -> Unit,
         onFailure: (Exception) -> Unit
     ) {
-        val estudiantesRef = materiasCollection.document(idMateria).collection("estudiantes")
-        estudiantesRef.add(estudiante)
+        val departamentoRef = empresasCollection.document(idEmpresa.toString()).collection("departamentos")
+        departamentoRef.add(departamento)
             .addOnSuccessListener {
-                estudiante.codigo = it.id
+                departamento.idDepartamento = it.id
                 onSuccess()
             }
             .addOnFailureListener { onFailure(it) }
     }
 
-    fun actualizarEstudiante(
-        idMateria: String,
-        estudiante: Estudiante,
+    fun actualizarDepartamento(
+        idEmpresa: String,
+        departamento: Departamento,
         onSuccess: () -> Unit,
         onFailure: (Exception) -> Unit
     ) {
-        val estudiantesRef = materiasCollection.document(idMateria).collection("estudiantes")
-        estudiantesRef.document(estudiante.codigo!!).set(estudiante)
+        val departamentosRef = empresasCollection.document(idEmpresa.toString()).collection("departamentos")
+        departamentosRef.document(departamento.idDepartamento!!).set(departamento)
             .addOnSuccessListener { onSuccess() }
             .addOnFailureListener { onFailure(it) }
     }
 
-    fun eliminarEstudiante(
-        idMateria: String,
-        idEstudiante: String,
+    fun eliminarDepartamento(
+        idEmpresa: String,
+        idDepartamento: String,
         onSuccess: () -> Unit,
         onFailure: (Exception) -> Unit
     ) {
-        val estudianteCollection =
-            materiasCollection.document(idMateria).collection("estudiantes").document(idEstudiante)
-        estudianteCollection.get()
-            .addOnSuccessListener { estudianteDoc ->
-                if (estudianteDoc.exists()) {
-                    estudianteCollection.delete()
+        val departamentoCollection =
+            empresasCollection.document(idEmpresa.toString()).collection("departamentos").document(idDepartamento)
+        departamentoCollection.get()
+            .addOnSuccessListener { departamentoDoc ->
+                if (departamentoDoc.exists()) {
+                    departamentoCollection.delete()
                         .addOnSuccessListener { onSuccess() }
                         .addOnFailureListener { onFailure(it) }
                 }
@@ -99,41 +99,41 @@ class FireStoreDB {
             .addOnFailureListener { onFailure(it) }
     }
 
-    fun getMaterias(onSuccess: (List<Materia>) -> Unit, onFailure: (Exception) -> Unit) {
-        materiasCollection.get()
+    fun getEmpresas(onSuccess: (List<Empresa>) -> Unit, onFailure: (Exception) -> Unit) {
+        empresasCollection.get()
             .addOnSuccessListener { result ->
-                val materias = mutableListOf<Materia>()
+                val empresas = mutableListOf<Empresa>()
                 for (document in result) {
-                    val materia = document.toObject(Materia::class.java)
-                    materia.codigo = document.id
-                    materias.add(materia)
-                    getEstudiantes(materia.codigo!!, onSuccess = {
-                        materia.estudiantes = it
+                    val empresa = document.toObject(Empresa::class.java)
+                    empresa.idEmpresa = document.id
+                    empresas.add(empresa)
+                    getDepartamentos(empresa.idEmpresa!!, onSuccess = {
+                        empresa.departamentos = it
                     }, onFailure = {})
                 }
-                onSuccess(materias)
+                onSuccess(empresas)
             }
             .addOnFailureListener {
                 onFailure(it)
             }
     }
 
-    fun getEstudiantes(
-        idMateria: String,
-        onSuccess: (List<Estudiante>) -> Unit,
+    fun getDepartamentos(
+        idEmpresa: String,
+        onSuccess: (List<Departamento>) -> Unit,
         onFailure: (Exception) -> Unit
     ) {
-        val estudiantesCollection = materiasCollection.document(idMateria).collection("estudiantes")
+        val departamentosCollection = empresasCollection.document(idEmpresa.toString()).collection("departamentos")
 
-        estudiantesCollection.get()
+        departamentosCollection.get()
             .addOnSuccessListener { result ->
-                val estudiantes = mutableListOf<Estudiante>()
+                val departamentos = mutableListOf<Departamento>()
                 for (document in result) {
-                    val estudiante = document.toObject(Estudiante::class.java)
-                    estudiante.codigo = document.id
-                    estudiantes.add(estudiante)
+                    val departamento = document.toObject(Departamento::class.java)
+                    departamento.idDepartamento = document.id
+                    departamentos.add(departamento)
                 }
-                onSuccess(estudiantes)
+                onSuccess(departamentos)
             }
             .addOnFailureListener {
                 onFailure(it)

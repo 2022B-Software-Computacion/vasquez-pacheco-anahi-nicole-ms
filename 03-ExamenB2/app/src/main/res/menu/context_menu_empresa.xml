@@ -7,6 +7,6 @@
         android:id="@+id/mi_eliminar"
         android:title="Eliminar" />
     <item
-        android:id="@+id/mi_estudiantes"
-        android:title="Estudiantes" />
+        android:id="@+id/mi_departamento"
+        android:title="Departamentos" />
 </menu>

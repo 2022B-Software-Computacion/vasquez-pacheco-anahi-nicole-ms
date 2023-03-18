@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EmpresaAdapter">
+
+    <TextView
+        android:id="@+id/label_nombreEmpresa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre Empresa"
+        android:textColor="#4FA143"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.044" />
+
+    <EditText
+        android:id="@+id/input_nombre_empresa"
+        android:layout_width="293dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="64dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/label_nombreEmpresa"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="@+id/label_nombreEmpresa"
+        app:layout_constraintTop_toBottomOf="@+id/label_nombreEmpresa"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/label_cantDepartamentos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Cantidad Departamentos"
+        android:textColor="#4FA143"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/input_nombre_empresa"
+        app:layout_constraintHorizontal_bias="0.437"
+        app:layout_constraintStart_toStartOf="@+id/input_nombre_empresa"
+        app:layout_constraintTop_toBottomOf="@+id/input_nombre_empresa"
+        app:layout_constraintVertical_bias="0.04" />
+
+    <EditText
+        android:id="@+id/input_cant_departamentos"
+        android:layout_width="293dp"
+        android:layout_height="46dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/label_cantDepartamentos"
+        app:layout_constraintStart_toStartOf="@+id/label_cantDepartamentos"
+        app:layout_constraintTop_toBottomOf="@+id/label_cantDepartamentos"
+        app:layout_constraintVertical_bias="0.131" />
+
+    <TextView
+        android:id="@+id/label_nombreGerente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre Gerente"
+        android:textColor="#4FA143"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/input_cant_departamentos"
+        app:layout_constraintHorizontal_bias="0.519"
+        app:layout_constraintStart_toStartOf="@+id/input_cant_departamentos"
+        app:layout_constraintTop_toBottomOf="@+id/input_cant_departamentos"
+        app:layout_constraintVertical_bias="0.127" />
+
+    <EditText
+        android:id="@+id/input_nombre_gerente"
+        android:layout_width="293dp"
+        android:layout_height="46dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/label_nombreGerente"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="@+id/label_nombreGerente"
+        app:layout_constraintTop_toBottomOf="@+id/label_nombreGerente"
+        app:layout_constraintVertical_bias="0.201" />
+
+    <Button
+        android:id="@+id/btn_crear_empresa"
+        android:layout_width="156dp"
+        android:layout_height="46dp"
+        android:backgroundTint="#226E17"
+        android:text="Guardar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/input_nombre_gerente"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/input_nombre_gerente"
+        app:layout_constraintTop_toBottomOf="@+id/input_nombre_gerente"
+        app:layout_constraintVertical_bias="0.922" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

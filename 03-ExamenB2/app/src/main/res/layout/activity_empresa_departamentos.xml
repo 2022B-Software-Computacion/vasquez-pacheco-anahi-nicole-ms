@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".EmpresaDepartamentos">
 
     <TextView
-        android:id="@+id/title_empresa"
+        android:id="@+id/title_departamento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Empresas"
-        android:textSize="28sp"
+        android:text="Departamentos"
+        android:textSize="24sp"
         android:textStyle="bold"
-        android:textColor="#4FA143"
-        android:padding="16dp"
-        tools:ignore="MissingConstraints" />
+        android:textColor="#E862DA"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="16dp"/>
 
     <LinearLayout
         android:id="@+id/linear"
@@ -24,14 +25,15 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_horizontal"
-        android:background="#2F9920"
+        android:background="#E862DA"
         android:padding="16dp"
-        app:layout_constraintTop_toBottomOf="@id/title_empresa">
+        tools:ignore="MissingConstraints"
+        app:layout_constraintTop_toBottomOf="@id/title_departamento">
 
         <TextView
+            android:id="@+id/textview_nombreEmpresa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="NOMBRE DE EMPRESA"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="@color/white">
@@ -39,27 +41,25 @@
     </LinearLayout>
 
     <ListView
-        android:id="@+id/lv_Empresa"
+        android:id="@+id/lv_Departamentos"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:padding="16dp"
         android:layout_margin="16dp"
-        android:gravity="center"
-        android:background="#0F5804"
+        android:gravity="center|center_horizontal"
+        android:background="#7F0271"
         app:layout_constraintTop_toBottomOf="@id/linear"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/btn_crear_empresa"/>
+        app:layout_constraintBottom_toTopOf="@+id/btn_createDepartamento"/>
 
     <Button
-        android:id="@+id/btn_crear_empresa"
+        android:id="@+id/btn_createDepartamento"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:backgroundTint="#226E17"
-        android:text="CREAR EMPRESA"
-        android:textColor="@color/white"
-        android:textStyle="bold"
+        android:backgroundTint="#C92EB9"
+        android:text="Crear"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
